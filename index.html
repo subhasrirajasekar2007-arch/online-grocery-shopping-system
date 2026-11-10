@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshCart - Online Grocery Shopping</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🛒 FreshCart</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#categories">Categories</a>
+        <a href="#orders">Orders</a>
+        <a href="#admin">Admin</a>
+    </nav>
+
+    <button class="cart-btn" onclick="openCart()">
+        🛒 Cart (<span id="cartCount">0</span>)
+    </button>
+</header>
+
+
+<!-- HOME -->
+<section id="home" class="hero">
+    <div>
+        <h1>Fresh Groceries at Your Doorstep</h1>
+        <p>Shop fresh and quality groceries online with FreshCart.</p>
+        <button onclick="scrollToProducts()">Shop Now</button>
+    </div>
+</section>
+
+
+<!-- CATEGORIES -->
+<section id="categories">
+    <h2>Shop by Category</h2>
+
+    <div class="category-container">
+        <button onclick="filterCategory('Fruits')">🍎 Fruits</button>
+        <button onclick="filterCategory('Vegetables')">🥕 Vegetables</button>
+        <button onclick="filterCategory('Dairy')">🥛 Dairy</button>
+        <button onclick="filterCategory('Grains')">🌾 Grains</button>
+        <button onclick="filterCategory('Grocery')">🛒 Grocery</button>
+    </div>
+</section>
+
+
+<!-- PRODUCTS -->
+<section id="products">
+    <h2>Our Products</h2>
+
+    <div class="search-box">
+        <input type="text" id="searchInput"
+               placeholder="Search grocery products..."
+               onkeyup="searchProducts()">
+
+        <select id="categoryFilter" onchange="filterCategory(this.value)">
+            <option value="All">All Categories</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Dairy">Dairy</option>
+            <option value="Grains">Grains</option>
+            <option value="Grocery">Grocery</option>
+        </select>
+    </div>
+
+    <div id="productContainer" class="product-container"></div>
+</section>
+
+
+<!-- ORDERS -->
+<section id="orders">
+    <h2>Order History</h2>
+
+    <div id="orderContainer">
+        <p class="empty">No orders placed yet.</p>
+    </div>
+</section>
+
+
+<!-- ADMIN -->
+<section id="admin">
+    <h2>Admin - Add Product</h2>
+
+    <div class="admin-form">
+
+        <input type="text" id="productName"
+               placeholder="Product Name">
+
+        <select id="productCategory">
+            <option value="Fruits">Fruits</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Dairy">Dairy</option>
+            <option value="Grains">Grains</option>
+            <option value="Grocery">Grocery</option>
+        </select>
+
+        <input type="number" id="productPrice"
+               placeholder="Price in ₹">
+
+        <input type="text" id="productEmoji"
+               placeholder="Product Emoji">
+
+        <button onclick="addProduct()">Add Product</button>
+    </div>
+</section>
+
+
+<!-- CART MODAL -->
+<div id="cartModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeCart()">×</span>
+
+        <h2>🛒 Shopping Cart</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-total">
+            <h3>Total: ₹<span id="cartTotal">0</span></h3>
+        </div>
+
+        <button class="checkout-btn" onclick="checkout()">
+            Proceed to Checkout
+        </button>
+
+    </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+    <h3>🛒 FreshCart</h3>
+    <p>Online Grocery Shopping Management System</p>
+    <p>© 2026 FreshCart. All Rights Reserved.</p>
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
